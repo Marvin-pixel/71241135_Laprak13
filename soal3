@@ -1,0 +1,19 @@
+nama_file = input("Enter a file name: ")
+
+jam_hitung = dict()
+
+try:
+    file = open(nama_file)
+
+    for baris in file:
+        if baris.startswith("From "):
+            kata = baris.split()
+            jam = kata[5].split(":")[0]
+
+            jam_hitung[jam] = jam_hitung.get(jam, 0) + 1
+
+    for jam, jumlah in sorted(jam_hitung.items()):
+        print(jam, jumlah)
+
+except:
+    print("File tidak ditemukan.")
